@@ -1,0 +1,31 @@
+version: '3'
+
+services: 
+    node:
+        build: 
+            context: .
+            dockerfile: node.dockerfile
+        ports: 
+            - "3000:3000"
+           
+        networks: 
+           - nodeapp-network
+    mongodb:
+        image: mongo
+        networks: 
+           - nodeapp-network
+networks:
+    nodeapp-network:
+        driver: bridge 
+
+# under services build a node service named it as node
+# build is the info of building , the context of building is "." pointing that into the 
+# main folder and the dokcerfile used to build should be present there , i mean the dev.dockerfile
+# should be in in the main folder 
+# port is about which port need to expose . 
+# then network is need becasue 2 services they have to talk each other and the 
+# type of the network is bridge        
+
+
+
+
